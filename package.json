@@ -1,0 +1,23 @@
+{
+  "name": "userdir",
+  "version": "1.0.0",
+  "description": "Given a file of user data, create a directory of users.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeanMcP/wk5-day2-userDir.git"
+  },
+  "author": "Sean McPherson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SeanMcP/wk5-day2-userDir/issues"
+  },
+  "homepage": "https://github.com/SeanMcP/wk5-day2-userDir#readme",
+  "dependencies": {
+    "express": "^4.15.4",
+    "mustache-express": "^1.2.5"
+  }
+}
