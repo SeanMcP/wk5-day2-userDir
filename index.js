@@ -8,7 +8,7 @@ app.set('views', './views')
 app.set('view engine', 'mustache')
 
 app.get('/', function(req, res){
-  res.render('index', { greeting: 'It is working'});
+  res.render('index', { userData: data.users});
 
 });
 
