@@ -7,6 +7,8 @@ app.engine('mustache', mustacheExpress());
 app.set('views', './views')
 app.set('view engine', 'mustache')
 
+app.use(express.static('public'))
+
 app.get('/', function(req, res){
   res.render('index', { userData: data.users});
 
