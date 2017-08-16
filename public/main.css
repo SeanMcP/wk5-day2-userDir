@@ -2,24 +2,28 @@ body {
   margin: 0;
 }
 body * {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Heebo', Helvetica, Arial, sans-serif;
 }
 .container {
   display: flex;
   flex-flow: row wrap;
   margin: 0 auto;
-  max-width: 720px;
+  max-width: 800px;
 }
 .container > h1 {
   flex: 1 90%;
+  font-weight: 300;
   text-align: center;
+}
+a {
+  flex: 1 19%;
+  margin: 10px;
+  text-decoration: none;
 }
 .userCard {
   border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 3px;
   color: #666;
-  flex: 1 20%;
-  margin: 10px;
   padding: 10px;
 }
 .userCard img {
@@ -29,19 +33,44 @@ body * {
   color: #447ECA;
   font-weight: normal;
 }
+.userCard p {
+  font-size: 0.9em;
+}
 .hire {
   color: #D8735F;
 }
 .listing img {
   border: 1px solid #ddd;
   border-radius: 100%;
-  padding: 10px;
+  padding: 5px;
+}
+.listing h1 {
+  font-size: 3em;
+  font-weight: 300;
+  margin: 0;
+}
+table {
+  flex: 1 90%;
 }
 table td {
   padding: 10px;
   text-align: left;
+  vertical-align: top;
+}
+td ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 table td.left {
   font-weight: bold;
   text-align: right;
+}
+.back {
+  border-top: 1px solid #ddd;
+  flex: 1 90%;
+  font-size: 0.9em;
+  margin: 20px 0;
+  padding: 20px 0;
+  text-align: center;
 }

@@ -15,7 +15,6 @@ app.get('/', function(req, res){
 app.get('/listing/:id', function(req, res){
   let singleUser = data.users[req.params.id - 1];
   res.render('listing', { userData: singleUser});
-  // res.render('listing', { userData: data.users});
 });
 
 app.listen(3000, function(){
