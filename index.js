@@ -13,7 +13,11 @@ app.get('/', function(req, res){
   res.render('directory', { userData: data.users});
 });
 app.get('/listing/:id', function(req, res){
-  let singleUser = data.users[req.params.id - 1];
+
+  let singleUser = data.users.find(function(user){
+    return user.id == req.params.id;
+  });
+
   res.render('listing', { userData: singleUser});
 });
 
