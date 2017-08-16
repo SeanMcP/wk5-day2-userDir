@@ -9,16 +9,18 @@
     <div class="container">
       <h1>User Directory</h1>
       {{#userData}}
-        <div class="userCard">
-          <img src={{avatar}} alt={{username}}/>
-          <h2>{{name}}</h2>
-          {{#job}}
+        <a href="/listing/{{id}}">
+          <div class="userCard">
+            <img src={{avatar}} alt={{name}}/>
+            <h2>{{name}}</h2>
+            {{#job}}
             <p>{{job}}, {{company}}</p>
-          {{/job}}
-          {{^job}}
+            {{/job}}
+            {{^job}}
             <p class='hire'>Available for hire</p>
-          {{/job}}
-        </div>
+            {{/job}}
+          </div>
+        </a>
       {{/userData}}
     </div>
   </body>

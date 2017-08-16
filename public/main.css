@@ -7,8 +7,10 @@ body * {
 .container {
   display: flex;
   flex-flow: row wrap;
+  margin: 0 auto;
+  max-width: 720px;
 }
-h1 {
+.container > h1 {
   flex: 1 90%;
   text-align: center;
 }
@@ -26,4 +28,20 @@ h1 {
 .userCard h2 {
   color: #447ECA;
   font-weight: normal;
+}
+.hire {
+  color: #D8735F;
+}
+.listing img {
+  border: 1px solid #ddd;
+  border-radius: 100%;
+  padding: 10px;
+}
+table td {
+  padding: 10px;
+  text-align: left;
+}
+table td.left {
+  font-weight: bold;
+  text-align: right;
 }
