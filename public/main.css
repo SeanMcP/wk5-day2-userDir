@@ -14,6 +14,16 @@ main {
   margin: 0 auto;
   max-width: 800px;
 }
+nav {
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
 h1 {
   flex: 1 90%;
   font-weight: 300;
