@@ -18,6 +18,8 @@
   "homepage": "https://github.com/SeanMcP/wk5-day2-userDir#readme",
   "dependencies": {
     "express": "^4.15.4",
-    "mustache-express": "^1.2.5"
+    "mongodb": "^2.2.31",
+    "mustache-express": "^1.2.5",
+    "path": "^0.12.7"
   }
 }
