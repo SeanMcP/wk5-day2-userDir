@@ -77,6 +77,58 @@ const getEmployed = function(req, res, next) {
   }
 }
 
+const getBySkill = function(req, res, next) {
+  let MongoClient = require('mongodb').MongoClient;
+  let assert = require('assert');
+
+  let skill = req.params.country;
+
+  let url = 'mongodb://localhost:27017/users';
+
+  MongoClient.connect(url, function(err, db){
+    assert.equal(null, err);
+
+    getData(db, function() {
+      db.close();
+      next();
+    });
+  });
+  let getData = function(db, callback) {
+    let users = db.collection('users');
+
+    users.find({'skills': {$in: [skill]}}).toArray().then(function(users) {
+        data = users;
+        callback();
+    });
+  }
+}
+
+const getByCountry = function(req, res, next) {
+  let MongoClient = require('mongodb').MongoClient;
+  let assert = require('assert');
+
+  let country = req.params.country;
+
+  let url = 'mongodb://localhost:27017/users';
+
+  MongoClient.connect(url, function(err, db){
+    assert.equal(null, err);
+
+    getData(db, function() {
+      db.close();
+      next();
+    });
+  });
+  let getData = function(db, callback) {
+    let users = db.collection('users');
+
+    users.find({'address.country': country}).toArray().then(function(users) {
+        data = users;
+        callback();
+    });
+  }
+}
+
 router.get('/', getListings, function(req, res) {
   res.render('results', { userData: data});
 });
@@ -92,6 +144,14 @@ router.get('/available', getAvailable, function(req, res) {
 })
 
 router.get('/employed', getEmployed, function(req, res) {
+  res.render('results', { userData: data});
+})
+
+router.get('/skill/:skill', getBySkill, function(req, res) {
+  res.render('results', { userData: data});
+})
+
+router.get('/country/:country', getByCountry, function(req, res) {
   res.render('results', { userData: data});
 })
 

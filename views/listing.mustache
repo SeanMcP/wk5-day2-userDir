@@ -15,10 +15,10 @@
           <h1>{{name}}</h1>
           {{#address}}
             {{#city}}
-              <p>{{city}}, {{country}} |
+              <p>{{city}}, <a href="/country/{{country}}">{{country}}</a> |
             {{/city}}
             {{^city}}
-              <p>{{country}} |
+              <p><a href="/country/{{country}}">{{country}}</a> |
             {{/city}}
           {{/address}}
           {{#job}}
@@ -41,7 +41,7 @@
         <td>
           <ul>
             {{#skills}}
-            <li>{{.}}</li>
+            <li><a href="/skill/{{.}}">{{.}}</a></li>
             {{/skills}}
           </ul>
         </td>

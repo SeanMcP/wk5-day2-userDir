@@ -1,14 +1,24 @@
-{{#userData}}
-  <a href="/listing/{{id}}">
-    <div class="userCard">
-      <img src={{avatar}} alt={{name}}/>
-      <h2>{{name}}</h2>
-      {{#job}}
-      <p>{{job}}, {{company}}</p>
-      {{/job}}
-      {{^job}}
-      <p class='hire'>Available for hire</p>
-      {{/job}}
-    </div>
-  </a>
-{{/userData}}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Robot LinkedIn</title>
+    <link rel="stylesheet" href="../main.css">
+  </head>
+  <body>
+    {{#userData}}
+    <a href="/listing/{{id}}">
+      <div class="userCard">
+        <img src={{avatar}} alt={{name}}/>
+        <h2>{{name}}</h2>
+        {{#job}}
+        <p>{{job}}, {{company}}</p>
+        {{/job}}
+        {{^job}}
+        <p class='hire'>Available for hire</p>
+        {{/job}}
+      </div>
+    </a>
+    {{/userData}}
+  </body>
+</html>

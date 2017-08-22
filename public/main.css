@@ -32,6 +32,9 @@ a {
   margin: 10px;
   text-decoration: none;
 }
+table a {
+  margin: 0;
+}
 .userCard {
   border: 1px solid #ddd;
   border-radius: 3px;
