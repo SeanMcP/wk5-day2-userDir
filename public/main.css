@@ -1,6 +1,4 @@
-<style>
 @import url('https://fonts.googleapis.com/css?family=Heebo:300,400,700');
-</style>
 
 body {
   margin: 0;
@@ -62,6 +60,7 @@ a {
   font-size: 3em;
   font-weight: 300;
   margin: 0;
+  text-align: left;
 }
 table {
   flex: 1 90%;

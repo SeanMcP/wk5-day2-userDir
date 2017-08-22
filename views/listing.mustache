@@ -1,43 +1,51 @@
-<div class="userCard">
-  <table class="listing">
-    <tr>
-      <td class="left">
-        <img src={{avatar}} alt={{name}}/>
-      </td>
-      <td>
-        <h1>{{name}}</h1>
-        {{#address}}
-          {{#city}}
-            <p>{{city}}, {{country}} |
-          {{/city}}
-          {{^city}}
-            <p>{{country}} |
-          {{/city}}
-        {{/address}}
-        {{#job}}
-          {{job}}, {{company}}</p>
-        {{/job}}
-        {{^job}}
-          <span class='hire'>Available for hire</span></p>
-        {{/job}}
-        <p>{{email}} | {{phone}}</p>
-      </td>
-    </tr>
-    {{#university}}
-    <tr>
-      <td class="left">Education</td>
-      <td>{{university}}</td>
-    </tr>
-    {{/university}}
-    <tr>
-      <td class="left">Skills</td>
-      <td>
-        <ul>
-          {{#skills}}
-          <li>{{.}}</li>
-          {{/skills}}
-        </ul>
-      </td>
-    </tr>
-  </table>
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../main.css">
+  </head>
+  <body>
+    <table class="listing">
+      <tr>
+        <td class="left">
+          <img src={{avatar}} alt={{name}}/>
+        </td>
+        <td>
+          <h1>{{name}}</h1>
+          {{#address}}
+            {{#city}}
+              <p>{{city}}, {{country}} |
+            {{/city}}
+            {{^city}}
+              <p>{{country}} |
+            {{/city}}
+          {{/address}}
+          {{#job}}
+            {{job}}, {{company}}</p>
+          {{/job}}
+          {{^job}}
+            <span class='hire'>Available for hire</span></p>
+          {{/job}}
+          <p>{{email}} | {{phone}}</p>
+        </td>
+      </tr>
+      {{#university}}
+      <tr>
+        <td class="left">Education</td>
+        <td>{{university}}</td>
+      </tr>
+      {{/university}}
+      <tr>
+        <td class="left">Skills</td>
+        <td>
+          <ul>
+            {{#skills}}
+            <li>{{.}}</li>
+            {{/skills}}
+          </ul>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
