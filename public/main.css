@@ -90,3 +90,25 @@ table td.left {
   padding: 20px 0;
   text-align: center;
 }
+
+/** EVEN MORE STYLES **/
+.formWrapper {
+  width: 100%;
+}
+.formWrapper form {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.formWrapper form * {
+  flex: 1 80%;
+  margin: 10px 0;
+  padding: 10px;
+}
+.formWrapper fieldset {
+  display: flex;
+  flex: 1 80%;
+  flex-flow: row wrap;
+}
+.formWrapper fieldset > * {
+  flex: 1 40%;
+}
