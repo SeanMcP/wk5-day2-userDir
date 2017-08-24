@@ -50,9 +50,8 @@ userSchema.statics.authenticat = function(username, password, done) {
       } else {
         done(null, false)
       }
-    }
-  })
-}
+    })
+  }
 
 const User = mongoose.model('User', userSchema)
 
