@@ -101,6 +101,7 @@ table td.left {
 }
 .formWrapper form * {
   flex: 1 80%;
+  font-size: 0.9em;
   margin: 10px 0;
   padding: 10px;
 }
