@@ -1,166 +1,140 @@
 const express = require('express');
 const router = express.Router();
+const User = require('../models/robots')
+const mongoose = require('mongoose')
+const passport = require('passport')
 
 let data = [];
 
 const getListings = function(req, res, next) {
-  let MongoClient = require('mongodb').MongoClient; // Bring in the Mongo client
-  let assert = require('assert'); // Tests for errors
+  User.find({}).sort('name')
+    .then(function(users) {
+      data = users
+      next()
+    })
+    .catch(function(err) {
+      console.log('errors', errors);
+    })
+}
 
-  let url = 'mongodb://localhost:27017/users'; // Mongo runs on separate localhost
-
-  MongoClient.connect(url, function(err, db){ // db represents robot user database
-    assert.equal(null, err);
-
-    getData(db, function() {
-      db.close();
-      next();
-    });
-    // looking:   users.find({'job': null})
-    // employed:  users.find({'job': $not: null})
-  });
-  let getData = function(db, callback) {
-    let users = db.collection('users');
-
-    users.find({}).toArray().then(function(users) {
-        data = users;
-        callback();
-    });
+const requireLogin = function(req, res, next) {
+  if (req.user) {
+    console.log(req.user)
+    next()
+  } else {
+    res.redirect('/login')
   }
 }
 
-const getAvailable = function(req, res, next) {
-  let MongoClient = require('mongodb').MongoClient;
-  let assert = require('assert');
-
-  let url = 'mongodb://localhost:27017/users';
-
-  MongoClient.connect(url, function(err, db){
-    assert.equal(null, err);
-
-    getData(db, function() {
-      db.close();
-      next();
-    });
-  });
-  let getData = function(db, callback) {
-    let users = db.collection('users');
-
-    users.find({'job': null}).toArray().then(function(users) {
-        data = users;
-        callback();
-    });
-  }
+function getAll(req, res, next) {
+  User.find()
+  .then(function(data) {
+    results = data
+    next()
+  })
+  .catch(function(err) {
+    console.log(err);
+  })
 }
 
-const getEmployed = function(req, res, next) {
-  let MongoClient = require('mongodb').MongoClient;
-  let assert = require('assert');
-
-  let url = 'mongodb://localhost:27017/users';
-
-  MongoClient.connect(url, function(err, db){
-    assert.equal(null, err);
-
-    getData(db, function() {
-      db.close();
-      next();
-    });
-  });
-  let getData = function(db, callback) {
-    let users = db.collection('users');
-
-    users.find({'job': {$ne:null}}).toArray().then(function(users) {
-        data = users;
-        callback();
-    });
-  }
+function getOne(req, res, next) {
+  let id = req.params.id
+  User.find({_id: id})
+  .then(function(data) {
+    results = data
+    next()
+  })
+  .catch(function(err) {
+    console.log('Error: ', err);
+  })
 }
 
-const getBySkill = function(req, res, next) {
-  let MongoClient = require('mongodb').MongoClient;
-  let assert = require('assert');
-
-  let skill = req.params.country;
-
-  let url = 'mongodb://localhost:27017/users';
-
-  MongoClient.connect(url, function(err, db){
-    assert.equal(null, err);
-
-    getData(db, function() {
-      db.close();
-      next();
-    });
-  });
-  let getData = function(db, callback) {
-    let users = db.collection('users');
-
-    users.find({'skills': {$in: [skill]}}).toArray().then(function(users) {
-        data = users;
-        callback();
-    });
-  }
-}
-
-const getByCountry = function(req, res, next) {
-  let MongoClient = require('mongodb').MongoClient;
-  let assert = require('assert');
-
-  let country = req.params.country;
-
-  let url = 'mongodb://localhost:27017/users';
-
-  MongoClient.connect(url, function(err, db){
-    assert.equal(null, err);
-
-    getData(db, function() {
-      db.close();
-      next();
-    });
-  });
-  let getData = function(db, callback) {
-    let users = db.collection('users');
-
-    users.find({'address.country': country}).toArray().then(function(users) {
-        data = users;
-        callback();
-    });
-  }
-}
-
-router.get('/', getListings, function(req, res) {
-  res.render('results', { userData: data});
-});
-router.get('/listing/:id', getListings, function(req, res){
-  let singleUser = data.find(function(user){
-    return user.id == req.params.id;
-  });
-  res.render('listing', singleUser);
-});
-
-router.get('/available', getAvailable, function(req, res) {
-  res.render('results', { userData: data});
-})
-
-router.get('/employed', getEmployed, function(req, res) {
-  res.render('results', { userData: data});
-})
-
-router.get('/skill/:skill', getBySkill, function(req, res) {
-  res.render('results', { userData: data});
-})
-
-router.get('/country/:country', getByCountry, function(req, res) {
-  res.render('results', { userData: data});
-})
+// router.get('/', requireLogin, function(req, res) {
+//   res.render('results',
+//
+//   // {
+//   //   message: res.locals.getMessages()
+//   // })
+// })
 
 router.get('/login', function(req, res) {
   res.render('login')
 })
 
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/login',
+  failureFlash: true
+}))
+
 router.get('/signup', function(req, res) {
   res.render('signup')
 })
+
+router.post('/signup', function(req, res) {
+  User.create({
+    username: req.body.username,
+    password: req.body.password,
+    name: req.body.name,
+    email: req.body.email
+  })
+  .then(function(data) {
+    res.redirect('/');
+  })
+  .catch(function(err) {
+    console.log('Sign up error: ', err);
+    res.redirect('/signup')
+  })
+})
+
+router.get('/', function(req, res) {
+  User.find({}).sort('name')
+    .then(function(users) {
+      res.render('results', { userData: users})
+    })
+    .catch(function(err) {
+      console.log('errors', errors)
+    })
+})
+router.get('/employed', function(req, res) {
+  User.find({'job': {$ne:null}})
+    .then(function(users) {
+      res.render('results', { userData: users})
+    })
+    .catch(function(err) {
+      console.log('errors', errors)
+    })
+})
+router.get('/available', function(req, res) {
+  User.find({'job': null})
+    .then(function(users) {
+      res.render('results', { userData: users})
+    })
+    .catch(function(err) {
+      console.log('errors', errors)
+    })
+})
+// router.get('/listing/:id', getListings, function(req, res){
+//   let singleUser = data.find(function(user){
+//     return user.id == req.params.id;
+//   });
+//   res.render('listing', singleUser);
+// });
+//
+// router.get('/available', getAvailable, function(req, res) {
+//   res.render('results', { userData: data});
+// })
+//
+// router.get('/employed', getEmployed, function(req, res) {
+//   res.render('results', { userData: data});
+// })
+//
+// router.get('/skill/:skill', getBySkill, function(req, res) {
+//   res.render('results', { userData: data});
+// })
+//
+// router.get('/country/:country', getByCountry, function(req, res) {
+//   res.render('results', { userData: data});
+// })
 
 module.exports = router;
