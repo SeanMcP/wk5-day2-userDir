@@ -62,9 +62,22 @@ router.get('/signup', function(req, res) {
 router.post('/signup', function(req, res) {
   User.create({
     username: req.body.username,
+    email: req.body.email,
     password: req.body.password,
     name: req.body.name,
-    email: req.body.email
+    avatar: req.body.avatar,
+    job: req.body.job,
+    company: req.body.company,
+    skills: req.body.skills,
+    phone: req.body.phone,
+    address: {
+      street_num: req.body.street_num,
+      street_name: req.body.street_name,
+      city: req.body.city,
+      state_or_province: req.body.state_or_province,
+      postal_code: req.body.postal_code,
+      country: req.body.country
+    }
   })
   .then(function(data) {
     res.redirect('/');
@@ -166,27 +179,6 @@ router.post('/update/:username', function(req, res) {
   .catch(function(err) {
     console.log('Error finding: ', err);
   })
-  // User.updateOne({username: req.params.username}, {
-  //     username: req.body.username,
-  //     email: req.body.email,
-  //     password: req.body.password,
-  //     name: req.body.name,
-  //     avatar: req.body.avatar,
-  //     job: req.body.job,
-  //     company: req.body.company,
-  //     skills: req.body.skills,
-  //     phone: req.body.phone,
-  //     street_num: req.body.street_num,
-  //     street_name: req.body.street_name,
-  //     city: req.body.city,
-  //     state_or_province: req.body.state_or_province,
-  //     postal_code: req.body.postal_code,
-  //     country: req.body.country
-  //   },
-  //   {
-  //     upsert: true
-  //   }
-  // )
   res.redirect('/')
 })
 
