@@ -6,19 +6,30 @@
     <link rel="stylesheet" href="../main.css">
   </head>
   <body>
-    {{#userData}}
-    <a href="/listing/{{id}}">
-      <div class="userCard">
-        <img src="{{avatar}}" alt="{{name}}"/>
-        <h2>{{name}}</h2>
-        {{#job}}
-        <p>{{job}}, {{company}}</p>
-        {{/job}}
-        {{^job}}
-        <p class='hire'>Available for hire</p>
-        {{/job}}
-      </div>
-    </a>
-    {{/userData}}
+    <div class="container">
+      <header><a href="/logout">Logout</a></header>
+      <h1>Robot LinkedIn</h1>
+      <nav>
+        <a href="/">User Directory</a>
+        <a href="/available">Available for Work</a>
+        <a href="/employed">Gainfully Employed</a>
+      </nav>
+      <main>
+        {{#userData}}
+        <a href="/view/{{username}}">
+          <div class="userCard">
+            <img src="{{avatar}}" alt="{{name}}"/>
+            <h2>{{name}}</h2>
+            {{#job}}
+            <p>{{job}}, {{company}}</p>
+            {{/job}}
+            {{^job}}
+            <p class='hire'>Available for hire</p>
+            {{/job}}
+          </div>
+        </a>
+        {{/userData}}
+      </main>
+    </div>
   </body>
 </html>

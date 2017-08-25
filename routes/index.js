@@ -4,7 +4,7 @@ const User = require('../models/robots')
 const mongoose = require('mongoose')
 const passport = require('passport')
 
-let data = [];
+let results = [];
 
 const getListings = function(req, res, next) {
   User.find({}).sort('name')
@@ -34,18 +34,6 @@ function getAll(req, res, next) {
   })
   .catch(function(err) {
     console.log(err);
-  })
-}
-
-function getOne(req, res, next) {
-  let id = req.params.id
-  User.find({_id: id})
-  .then(function(data) {
-    results = data
-    next()
-  })
-  .catch(function(err) {
-    console.log('Error: ', err);
   })
 }
 
@@ -90,51 +78,47 @@ router.post('/signup', function(req, res) {
 router.get('/', function(req, res) {
   User.find({}).sort('name')
     .then(function(users) {
-      res.render('results', { userData: users})
+      res.render('results', {userData: users})
     })
     .catch(function(err) {
-      console.log('errors', errors)
+      console.log('errors: ', err)
     })
 })
 router.get('/employed', function(req, res) {
   User.find({'job': {$ne:null}})
     .then(function(users) {
-      res.render('results', { userData: users})
+      res.render('results', {userData: users})
     })
     .catch(function(err) {
-      console.log('errors', errors)
+      console.log('errors: ', err)
     })
 })
 router.get('/available', function(req, res) {
   User.find({'job': null})
     .then(function(users) {
-      res.render('results', { userData: users})
+      res.render('results', {userData: users})
     })
     .catch(function(err) {
-      console.log('errors', errors)
+      console.log('errors: ', err)
     })
 })
-// router.get('/listing/:id', getListings, function(req, res){
-//   let singleUser = data.find(function(user){
-//     return user.id == req.params.id;
-//   });
-//   res.render('listing', singleUser);
-// });
-//
-// router.get('/available', getAvailable, function(req, res) {
-//   res.render('results', { userData: data});
-// })
-//
-// router.get('/employed', getEmployed, function(req, res) {
-//   res.render('results', { userData: data});
-// })
-//
-// router.get('/skill/:skill', getBySkill, function(req, res) {
-//   res.render('results', { userData: data});
-// })
-//
-// router.get('/country/:country', getByCountry, function(req, res) {
-//   res.render('results', { userData: data});
-// })
+
+router.get("/logout", function(req, res) {
+  req.logout()
+  res.redirect("/")
+})
+
+function getOne(req, res, next) {
+  User.findOne({username: req.params.username})
+  .then(function(data) {
+    res.render('listing', data)
+    next()
+  })
+  .catch(function(err) {
+    console.log('Error: ', err);
+  })
+}
+
+router.get('/view/:username', getOne, function(req, res) {})
 
 module.exports = router;
