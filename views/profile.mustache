@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Robot LinkedIn</title>
+    <link rel="stylesheet" href="../main.css">
+  </head>
+  <body>
+    <div class="container">
+      <header><a href="/logout">Logout</a></header>
+      <h1>Robot LinkedIn</h1>
+      <nav>
+        <a href="/">User Directory</a>
+        <a href="/available">Available for Work</a>
+        <a href="/employed">Gainfully Employed</a>
+      </nav>
+      <main>
+        <table class="listing">
+          <tr>
+            <td class="left">
+              <img src={{avatar}} alt={{name}}/>
+            </td>
+            <td>
+              <h1>{{name}}</h1>
+              {{#address}}
+                {{#city}}
+                  <p>{{city}}, {{country}} |
+                {{/city}}
+                {{^city}}
+                  <p>{{country}}</a> |
+                {{/city}}
+              {{/address}}
+              {{#job}}
+                {{job}}, {{company}}</p>
+              {{/job}}
+              {{^job}}
+                <span class='hire'>Available for hire</span></p>
+              {{/job}}
+              <p>{{email}} | {{phone}}</p>
+            </td>
+          </tr>
+          {{#university}}
+          <tr>
+            <td class="left">Education</td>
+            <td>{{university}}</td>
+          </tr>
+          {{/university}}
+          <tr>
+            <td class="left">Skills</td>
+            <td>
+              <ul>
+                {{#skills}}
+                <li>{{.}}</li>
+                {{/skills}}
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </main>
+    </div>
+  </body>
+</html>

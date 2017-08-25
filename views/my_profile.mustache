@@ -24,10 +24,10 @@
               <h1>{{name}}</h1>
               {{#address}}
                 {{#city}}
-                  <p>{{city}}, <a href="/country/{{country}}">{{country}}</a> |
+                  <p>{{city}}, {{country}} |
                 {{/city}}
                 {{^city}}
-                  <p><a href="/country/{{country}}">{{country}}</a> |
+                  <p>{{country}}</a> |
                 {{/city}}
               {{/address}}
               {{#job}}
@@ -50,12 +50,13 @@
             <td>
               <ul>
                 {{#skills}}
-                <li><a href="/skill/{{.}}">{{.}}</a></li>
+                <li>{{.}}</li>
                 {{/skills}}
               </ul>
             </td>
           </tr>
         </table>
+        <p class="center"><a href="/edit/{{username}}">Edit your profile</a></p>
       </main>
     </div>
   </body>

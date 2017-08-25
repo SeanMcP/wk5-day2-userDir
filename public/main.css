@@ -32,6 +32,9 @@ a {
   margin: 10px;
   text-decoration: none;
 }
+.center {
+  text-align: center;
+}
 table a {
   margin: 0;
 }
@@ -97,13 +100,19 @@ table td.left {
 }
 .formWrapper form {
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row wrap;
 }
 .formWrapper form * {
   flex: 1 80%;
   font-size: 0.9em;
   margin: 10px 0;
   padding: 10px;
+}
+.formWrapper form label {
+  flex: 0 20%;
+}
+.formWrapper form input {
+  flex: 1 70%;
 }
 .formWrapper fieldset {
   display: flex;

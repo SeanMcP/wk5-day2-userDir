@@ -1,9 +1,30 @@
-<div class="formWrapper">
-  <h2>Login</h2>
-  <form class="" action="/login" method="post">
-    <input type="text" name="username" value="" placeholder="Username" autofocus>
-    <input type="password" name="password" value="" placeholder="Password">
-    <button type="submit" name="button">Login</button>
-  </form>
-  <p>Don't have an account? <a href="/signup">Create one!</a></p>
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Robot LinkedIn</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <div class="container">
+      <header><a href="/logout">Logout</a></header>
+      <h1>Robot LinkedIn</h1>
+      <nav>
+        <a href="/">User Directory</a>
+        <a href="/available">Available for Work</a>
+        <a href="/employed">Gainfully Employed</a>
+      </nav>
+      <main>
+        <div class="formWrapper">
+          <h2>Login</h2>
+          <form class="" action="/login" method="post">
+            <input type="text" name="username" value="" placeholder="Username" autofocus>
+            <input type="password" name="password" value="" placeholder="Password">
+            <button type="submit" name="button">Login</button>
+          </form>
+          <p>Don't have an account? <a href="/signup">Create one!</a></p>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

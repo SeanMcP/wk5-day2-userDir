@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Robot LinkedIn</title>
+    <link rel="stylesheet" href="../main.css">
+  </head>
+  <body>
+    <div class="container">
+      <header><a href="/logout">Logout</a></header>
+      <h1>Robot LinkedIn</h1>
+      <nav>
+        <a href="/">User Directory</a>
+        <a href="/available">Available for Work</a>
+        <a href="/employed">Gainfully Employed</a>
+      </nav>
+      <main>
+        <div class="formWrapper">
+          <h2>Edit your profile</h2>
+          <form class="" action="/update/{{username}}" method="post">
+            <label for="username">Username:</label>
+            <input type="text" name="username" value="{{username}}" placeholder="Username" autofocus>
+            <label for="email">Email address:</label>
+            <input type="email" name="email" value="{{email}}" placeholder="Email account" required>
+            <label for="password">Password:</label>
+            <input type="password" name="password" value="" placeholder="Password" required>
+            <label for="name">Full name:</label>
+            <input type="text" name="name" value="{{name}}" placeholder="Full name" required>
+            <label for="avatar">Avatar URL:</label>
+            <input type="text" name="avatar" value="{{avatar}}" placeholder="Avatar URL">
+            <label for="job">Job title:</label>
+            <input type="text" name="job" value="{{job}}" placeholder="Job title">
+            <label for="company">Company:</label>
+            <input type="text" name="company" value="{{company}}" placeholder="Company">
+            <label for="skills">Skills:</label>
+            <input type="text" name="skills" value="{{#skills}}{{.}} {{/skills}}" placeholder="List your skills">
+            <label for="phone">Phone number:</label>
+            <input type="tel" name="phone" value="{{phone}}" placeholder="Phone number" pattern="[\(]\d{3}[\)]\d{3}[\-]\d{4}">
+            {{#address}}
+              <label for="street_num">Street number:</label>
+              <input type="number" name="street_num" value="{{street_num}}" placeholder="Street number">
+              <label for="street_name">Street name:</label>
+              <input type="text" name="street_name" value="{{street_name}}" placeholder="Street name">
+              <label for="city">City</label>
+              <input type="text" name="city" value="{{city}}" placeholder="City">
+              <label for="state_or_province">State or province:</label>
+              <input type="text" name="state_or_province" value="{{state_or_province}}" placeholder="State or province">
+              <label for="postal_code">Postal code:</label>
+              <input type="number" name="postal_code" value="{{postal_code}}" placeholder="Postal code">
+              <label for="country">Country:</label>
+              <input type="text" name="country" value="{{country}}" placeholder="Country">
+            {{/address}}
+            <button type="submit" name="button">Update your profile</button>
+          </form>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

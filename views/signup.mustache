@@ -1,22 +1,58 @@
-<div class="formWrapper">
-  <h2>Create an account</h2>
-  <form class="" action="/signup" method="post">
-    <input type="text" name="username" value="" placeholder="Username" autofocus>
-    <input type="email" name="email" value="" placeholder="Email account" required>
-    <input type="password" name="password" value="" placeholder="Password" required>
-    <input type="text" name="name" value="" placeholder="Full name" required>
-    <input type="text" name="avatar" value="" placeholder="Avatar URL">
-    <input type="text" name="job" value="" placeholder="Job title">
-    <input type="text" name="company" value="" placeholder="Company">
-    <input type="text" name="skills" value="" placeholder="List your skills">
-    <input type="tel" name="phone" value="" placeholder="Phone number" pattern="[\(]\d{3}[\)]\d{3}[\-]\d{4}">
-    <input type="number" name="street_num" value="" placeholder="Street number">
-    <input type="text" name="street_name" value="" placeholder="Street name">
-    <input type="text" name="city" value="" placeholder="City">
-    <input type="text" name="state_or_province" value="" placeholder="State or province">
-    <input type="number" name="postal_code" value="" placeholder="Postal code">
-    <input type="text" name="country" value="" placeholder="Country">
-    <button type="submit" name="button">Create Account</button>
-  </form>
-  <p>Already have an account? <a href="/login">Login!</a></p>
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Robot LinkedIn</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <div class="container">
+      <header><a href="/logout">Logout</a></header>
+      <h1>Robot LinkedIn</h1>
+      <nav>
+        <a href="/">User Directory</a>
+        <a href="/available">Available for Work</a>
+        <a href="/employed">Gainfully Employed</a>
+      </nav>
+      <main>
+        <div class="formWrapper">
+          <h2>Create an account</h2>
+          <form class="" action="/signup" method="post">
+            <label for="username">Username:</label>
+            <input type="text" name="username" value="" placeholder="Username" autofocus>
+            <label for="email">Email address:</label>
+            <input type="email" name="email" value="" placeholder="Email account" required>
+            <label for="password">Password:</label>
+            <input type="password" name="password" value="" placeholder="Password" required>
+            <label for="name">Full name:</label>
+            <input type="text" name="name" value="" placeholder="Full name" required>
+            <label for="avatar">Avatar URL:</label>
+            <input type="text" name="avatar" value="" placeholder="Avatar URL">
+            <label for="job">Job title:</label>
+            <input type="text" name="job" value="" placeholder="Job title">
+            <label for="company">Company:</label>
+            <input type="text" name="company" value="" placeholder="Company">
+            <label for="skills">Skills:</label>
+            <input type="text" name="skills" value="" placeholder="List your skills">
+            <label for="phone">Phone number:</label>
+            <input type="tel" name="phone" value="" placeholder="Phone number" pattern="[\(]\d{3}[\)]\d{3}[\-]\d{4}">
+            <label for="street_num">Street number:</label>
+            <input type="number" name="street_num" value="" placeholder="Street number">
+            <label for="street_name">Street name:</label>
+            <input type="text" name="street_name" value="" placeholder="Street name">
+            <label for="city">City</label>
+            <input type="text" name="city" value="" placeholder="City">
+            <label for="state_or_province">State or province:</label>
+            <input type="text" name="state_or_province" value="" placeholder="State or province">
+            <label for="postal_code">Postal code:</label>
+            <input type="number" name="postal_code" value="" placeholder="Postal code">
+            <label for="country">Country:</label>
+            <input type="text" name="country" value="" placeholder="Country">
+            <button type="submit" name="button">Create Account</button>
+          </form>
+          <p>Already have an account? <a href="/login">Login!</a></p>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
